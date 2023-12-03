@@ -17,6 +17,8 @@ export const authOptions = {
   pages: {
     signIn: "/signIn",
   },
+  secret: process.env.NEXTAUTH_SECRET,
+  
   callbacks: {
     async signIn({ user, account }) {
       const apiUrl = process.env.API_URL;
@@ -51,7 +53,7 @@ export const authOptions = {
       return user;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  
 };
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
